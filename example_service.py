@@ -194,7 +194,9 @@ def demo_service_discovery():
 if __name__ == "__main__":
     import sys
     
-    if len(sys.argv) < 3:
+    if len(sys.argv) >= 2 and sys.argv[1] == "demo":
+        demo_service_discovery()
+    elif len(sys.argv) < 3:
         print("Usage: python example_service.py <service_name> <port>")
         print("\nExample:")
         print("  python example_service.py user-service 8001")
@@ -202,9 +204,6 @@ if __name__ == "__main__":
         print("\nOr run demo:")
         print("  python example_service.py demo")
         sys.exit(1)
-    
-    if sys.argv[1] == "demo":
-        demo_service_discovery()
     else:
         service_name = sys.argv[1]
         port = sys.argv[2]
